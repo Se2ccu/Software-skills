@@ -1,0 +1,18 @@
+# 第一次需要配置SSH秘钥才能用
+1.ssh-keygen -t rsa -C "zhoutaoccu@qq.com"
+2.一直按确认，得到/c/Users/zhout/.ssh/id_rsa.pub秘钥文件，用记事本打开后，复制
+3.将SSH秘钥粘贴到Github网站->Setting->SSH keys，增加SSH秘钥
+
+## 从Github下载项目文件 HTTPS/SSH
+git clone https://github.com/zhoutaoccu/Software-skills.git
+git clone git@github.com:zhoutaoccu/Software-skills.git
+## 表明身份
+
+git config --global user.name "Zhoutaoccu"
+git config --global user.email "zhoutaoccu@qq.com"
+
+#Commit
+git commit -m "first init"
+
+#Push
+git push

@@ -1,0 +1,20 @@
+win10系统+U盘启动盘制作工具
+office.word 账号登录+word模板+visio+mathtype6.9
+matlab安装+破解+初始位置设置
+搜狗输入法+Notepad+everything+福昕PDF阅读器+CAJ知网阅读器+360压缩
+PYcharm+Anaconda+Xgboost, Tensorflow(based on anaconda navigator)+texlive2017+TeXstudio
+X-mind思维导图+Nero刻录软件
+PolSARpro 5.1安装+PS安装破解+GIM图像浏览器
+QQ/TIM+迅雷+360杀毒+鲁大师（硬件温度，清灰）+微信+网易云音乐+网易邮箱+百度网盘+欧陆词典，朗道+vocabulary词库
+Mendeley+Git连接Github
+C++套装：MinGW64既可以在MATLAB编译，也可以学C++/+VS2015
+截图工具Snipaste+easyscreen录屏软件+PP助手(ipad管理)
+磁盘分区精灵（DiskGenius）+365磁盘空间分析专家，用于移动硬盘目录的恢复
+Sourceinsight查看工程项目代码+Beyondcompare对比代码差异
+MarkdownPad方便直接写github的markdown，左边写，右边就能预览
+
+系统设置心得:
+编程工具记得添加系统变量，lib，script，exe
+搜狗输入可以隐藏到工具栏，再也不用拖来拖去
+记得设置窗口背景色为淡绿色，护眼，同时win10在显示设置中可以开夜灯模式，夜晚护眼。最好看的主题色是橙色
+最好用的编程字体consoles，12号

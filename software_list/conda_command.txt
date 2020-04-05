@@ -1,0 +1,62 @@
+## 虚拟环境
+# 创建一个环境名为py34，指定Python版本是3.4（不用管是3.4.x，conda会为我们自动寻找3.4.x中的最新版本）
+conda create --name py34 python=3.4
+# 通过创建环境，我们可以使用不同版本的Python
+conda create --name py27 python=2.7
+
+conda create -n tensorflow python=3.6
+
+# 在windows环境下使用activate激活
+activate py34
+
+# 在windows环境下使用deactivate
+deactivate
+
+conda remove -n py34 --all
+
+# 环境查看
+conda info -e
+
+# 添加Anaconda的TUNA镜像
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/
+conda config --set show_channel_urls yes
+
+## 库管理
+conda list
+#我们可以通过search命令检查pandas这个包是否可以通过conda来安装
+#命令返回了这个包的信息，所以是可以通过conda安装的
+conda search pandas
+conda update pandas
+conda remove pandas
+
+## 从github下载zip，tar.gz等压缩包解压后进入解压目录
+f:
+cd F:\研究生课件\Tony_responsity\Python_algorithm\algorithms-master_新版本\algorithms-master
+python setup.py install
+
+## 更新操作
+conda update conda 
+conda update anaconda
+conda update python 
+
+## Jupyter Notebook支持虚拟运行环境
+conda install nb_conda
+
+#创建Tensorflow内核
+conda install -n tensorflow ipykernel
+#conda remove -n Tensorflow --all 会直接把tf环境都删了，慎用
+
+python -m ipykernel install --user
+
+
+jupter notebook设置默认路径：右键快捷菜单，属性，目标，script.py D:\python %USERPROFILE% 在百分号前加路径
+
+##Anaconda和cuda环境变量设置
+D:\professionalprogram\Anaconda3
+D:\professionalprogram\Anaconda3\Scripts
+D:\professionalprogram\Anaconda3\Library\bin
+
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v9.0\bin
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v9.0\lib\x64
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v9.0\include

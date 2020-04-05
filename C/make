@@ -1,0 +1,24 @@
+##1:直接编译出.so，测试成功
+gcc test_a.c test_b.c test_c.c -fPIC -shared -o libtest.so
+
+export LD_LIBRARY_PATH=.
+ 
+gcc test.c -L. -ltest -o test
+
+./test
+ 
+##2: 先编译出.o文件，和中的.so文件一致
+#不能去掉-fPIC
+gcc -c -fPIC -o test_a.o test_a.c
+gcc -c -fPIC -o test_b.o test_b.c
+gcc -c -fPIC -o test_c.o test_c.c
+
+gcc -fPIC -shared -o libtest.so test_a.o test_b.o test_c.o
+
+export LD_LIBRARY_PATH=.
+
+gcc -o test test.c -ltest_a -ltest_b -ltest_c -L.
+
+./test
+
+##gcc -g -o test test.c -ltest_a -L. -Wl,-rpath=.
