@@ -1,3 +1,9 @@
+# Rigth Now
+[[C语言进阶学习](https://github.com/zhoutaoccu/Software-skills/blob/master/C/C_basic.md)]
+1.  变量
+2.  表达式
+
+
 # 旧卡丑Sourceinsight替代品 ：Visual Studio Code(VS Code)
 - 安装简单，而且开源免费，主要是插件比较多，比较方便。一下主要从功能和命令方面讲怎么从SI转到VS Code.
 - 插件必安装：1.Setting Sync 2.C/C++(官方编译器，这样才能支持函数和符号查找) 3.Chinese Language语言包 4.Python执行器 5.Leetcode刷题插件 6.TODO高亮需求开发
