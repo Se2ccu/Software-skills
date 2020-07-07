@@ -61,9 +61,18 @@ https://jingyan.baidu.com/article/0f5fb0995f77fc6d8334eabb.html
 2.Install Docker image by github man after edit Daemon server list.
 https://hub.docker.com/r/smatyukevich/raspberry-pi-os-builder/dockerfile
 
-3.Add date hardware to docker images after set password for win10.  
+3.config the mirror of docker daemon in the software setting.
+In daemon registry-mirrors add: https://registry.docker-cn.com 
+
+or other chinese mirror to fast the acess.
+
+4.docker pull smatyukevich/raspberry-pi-os-builder
+
+4.Add date hardware to docker images after set password for win10.  
 docker run --rm -v F:\3#HUAWEI2019\raspberry-pi-os\:/data smatyukevich/raspberry-pi-os-builder ls /data
 
+4.docker image setup
+[[setup_cmd](https://blog.51cto.com/11134648/2160257)]
 docker run -v F:/3#HUAWEI2019/raspberry-pi-os:/data smatyukevich/raspberry-pi-os-builder ls /data
 
 

@@ -22,7 +22,6 @@
 #include <stdio.h>   /* gets */
 #include <stdlib.h>  /* atoi, malloc,qsort */
 #include <string.h>  /* strcpy,strcmp */
-#include <limits.h>  /* UINT32_MAX */
 #include "uthash.h"
 
 typedef unsigned char UINT8;
@@ -35,9 +34,6 @@ typedef float FP32;
 typedef double FP64;
 
 #define MAX(x, y) ((x) > (y) ? (x) : (y))
-
-/* length of array */
-#define NELEMS(x) ((sizeof(x)) / (sizeof((x)[0])))
 
 typedef struct
 { 
@@ -138,105 +134,65 @@ int cmp_struct2_reverse(const void* a, const void* b)
 
 int cmp_matrix(const void* a, const void* b)
 {
-    int *ap = *(int**)a;
-    int *bp = *(int**)b;
-    return ap[0] - bp[0];
+    //int *ap = *(int**)a;
+    //int *bp = *(int**)b;
+    //return ap[0] - bp[0];
+
+    return (*(int**)a)[0] - (*(int**)b)[0];
 }
 
-
-#if 0
-int cmp_gold_medals(const void* lhs, const void* rhs) {
-    const struct Nation* left = (const struct Nation*)lhs;
-    const struct Nation* right = (const struct Nation*)rhs;
-    if (left->gold_medals < right->gold_medals) {
-        return -1;
-    } else if (right->gold_medals < left->gold_medals) {
-        return 1;
-    }
-    return 0;
-}
-#endif
-
-void sortInt()
+#define MAX_QUENE_NUM 10001
+int* Slove(int k, int** update, int updateSize, int* updateColSize, int** out, int outSize, int* outColSize, int* returnSize)
 {
-	int num[] = {10, 9, 8, 7, 10, 6, 5, 4, 3, 2, 1};
-	/* test for 整形数据排序 */
-	printf("Test for int sorted.\n");
-    qsort(num, sizeof(num)/sizeof(num[0]), sizeof(num[0]), cmp_int);
-    for (int i = 0; i < 11; i++) {
-        printf("%d ", num[i]);
+    int update_queue[MAX_QUENE_NUM] = { 0 };
+    int out_for_paper[MAX_QUENE_NUM] = { 0 };
+
+    printf("qsort BEGIN.\n");
+    qsort(update, updateSize, sizeof(update[0]), cmp_matrix);
+    printf("qsort END.\n");
+
+    for (int i = 0; i < updateSize; i++) {
+        update_queue[update[i][0]] = update[i][1];
+        printf("update_queue: index = [%d], value = [%d].\n", update[i][0], update[i][1]);
     }
-    printf("\n");
-	
-	qsort(num, sizeof(num)/sizeof(num[0]), sizeof(num[0]), cmp_int_reverse);
-    for (int i = 0; i < 11; i++) {
-        printf("%d ", num[i]);
+
+    for (int i = 0; i < outSize; i++) {
+        for (int j = out[i][0]; j <= out[i][1]; j++) {
+            out_for_paper[j] = 1;
+            printf("out_for_paper: index = [%d], value = [%d].\n", j, out_for_paper[j]);
+
+        }
     }
-    printf("\n");
+
+    int days = update[updateSize - 1][0];
+    int chapter_to_learn = 0;
+    int index = 0;
+    int* ret = (int*)malloc(sizeof(int) * (days + 1));
+    if (ret == NULL) {
+        *returnSize = 0;
+        return NULL;
+    }
+
+    for (int i = 0; i <= days; i++)
+    {
+        chapter_to_learn += update_queue[i];
+        printf("chapter_to_learn is %d.\n", chapter_to_learn);
+
+        if (out_for_paper[i] == 1) {
+            continue;
+        }
+
+        if (chapter_to_learn == 0) {
+            ret[index++] = i;
+        }
+
+        chapter_to_learn = (chapter_to_learn > k) ? (chapter_to_learn - k) : 0;
+    }
+
+    *returnSize = index;
+    return ret;
 }
 
-void sortStr()
-{
-	/* error string init */
-    //char c_str[4][10] = {"abc", "bcd", "abd", "abcd"};
-	char* c_str[] = {"abc", "bcd", "abd", "abcd", "ABC", "BC"};
-	
-	/* test for 字符串排序 */
-    printf("Test for char sorted.\n");
-	qsort(c_str, 6, sizeof(c_str[0]), cmp_string);
-    for (int i = 0; i < 6; i++) {
-        printf("%s ", c_str[i]);
-    }
-    printf("\n");
-	
-	qsort(c_str, 6, sizeof(c_str[0]), cmp_string_reverse);
-    for (int i = 0; i < 6; i++) {
-        printf("%s ", c_str[i]);
-    }
-    printf("\n");
-}
-
-void sortDouble()
-{
-	double d_num[] = {10.1, 9.9, 8, 7, 6, 5, 4, 3, 2, 1, 1.01};
-	
-	/* test for 浮点型数据排序 */
-	printf("Test for double sorted.\n");
-    qsort(d_num, 11, sizeof(d_num[0]), cmp_double);
-    for (int i = 0; i < 11; i++) {
-        printf("%f ", d_num[i]);
-    }
-    printf("\n");
-	
-	qsort(d_num, 11, sizeof(d_num[0]), cmp_double_reverse);
-    for (int i = 0; i < 11; i++) {
-        printf("%f ", d_num[i]);
-    }
-    printf("\n");
-}
-
-void sortStruct2()
-{
-	Stu s[3] = {
-        {3, 3},
-        {2, 2},
-        {1, 1}
-    };
-	
-	/* test for 结构体数据排序 */
-	printf("Test for struct2 sorted.\n");
-    qsort(s, 3, sizeof(s[0]), cmp_struct2);
-    for (int i = 0; i < 3; i++) {
-        printf("%d %d\n", s[i].data1, s[i].data2);
-    }
-    printf("\n");
-	
-	qsort(s, 3, sizeof(s[0]), cmp_struct2_reverse);
-    for (int i = 0; i < 3; i++) {
-        printf("%d %d\n", s[i].data1, s[i].data2);
-    }
-    printf("\n");
-}
 
 
 
@@ -246,14 +202,21 @@ int main()
 
 	printf("TEST BEGIN.\n");
 	
-	sortInt();
-	
-	sortStr();
-	
-	sortDouble();
-	
-	sortStruct2();
+    int k = 3; // 每天学习课程最大章节数
+    int update[3][2] = {{3, 6}, {0, 5}, {9, 1}}; // 按照日期的课程更新情况
+    int out[1][2] = {{3, 5}}; // 写论文区间，多个
 
+    int returnSize;
+    int* ret = NULL;
+
+    printf("Slove BEGIN.\n");
+    ret = Slove(k, update, 3, NULL, out, 1, NULL, &returnSize);
+    printf("returnSize = %d\n", returnSize);
+
+    for (int i = 0; i < returnSize; i++) {
+        printf("%d ", ret[i]);
+    }
+    
     return 0;
 }
 

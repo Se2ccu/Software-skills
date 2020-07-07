@@ -20,7 +20,7 @@
 */ 
 
 #include <stdio.h>   /* gets */
-#include <stdlib.h>  /* atoi, malloc,qsort */
+#include <stdlib.h>  /* atoi, malloc, qsort */
 #include <string.h>  /* strcpy,strcmp */
 #include "uthash.h"
 
