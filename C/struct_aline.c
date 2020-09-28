@@ -22,10 +22,10 @@ typedef struct //stu1,不用typedef就这样写
 
 
 int main()
-{
+{   
 	//struct stu1 my_stuct;
 	stu1 my_stu1;
-	printf("sizeof(stu1)=%d\n",sizeof(stu1));//结构体名
-	printf("sizeof(my_stu1)=%d\n",sizeof(my_stu1));//结构体具体的例子
-	return 0;
-}
+	printf("sizeof(stu1)=%d\n", sizeof(stu1));//结构体名
+	printf("sizeof(my_stu1)=%d\n", sizeof(my_stu1));//结构体具体的例子
+	return 0;     
+} 
