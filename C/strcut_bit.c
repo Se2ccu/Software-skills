@@ -10,7 +10,7 @@
 #include <stdio.h>
 
 
-typedef struct //位域结构体
+typedef struct //位域结构体，如果位域位数总和少于数据类似长度，则按照单位数据长度大小
 {                                                                                                                                
     int a:1;  
     int b:4;
@@ -23,8 +23,5 @@ int main()
     stu1.a = 1;
     printf("sizeof(s_stu1) = %d\n", sizeof(s_stu1));
     printf("stu1.a = %d\n", stu1.a);
-    int a, b;
-    scanf("%d, %d", &a, &b);
-    printf("%d %d",a, b);
     return 0;
 }
