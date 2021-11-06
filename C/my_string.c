@@ -16,10 +16,10 @@ int main(int argc, char *argv[])
 	printf("point pstr1 = %s sizeof(pstr1) = %u, len is %u\n", ptr1, sizeof(ptr1), strlen(ptr1));
 	printf("array string = %s sizeof(ar1) = %u, len is %u\n", ar1, sizeof(ar1), strlen(ar1));
     
-    const char *str = "hello";
-    char str1[] = {"hello"};
+    const char *str = "hello";  // 静态区的常量区
+    char str1[] = {"hello"};    // 栈区
     char str2[] = "hello";
-    char str3[] = {'h', 'e', 'l', 'l', 'o'}; // 异常打印
+    char str3[] = {'h', 'e', 'l', 'l', 'o'}; // 异常打印，一直找到后面的零，而且由于栈向低地址生长，会把之前的栈内容打出来，直到0。
     char str4[] = {'h', 'e', 'l', 'l', 'o', 0};
     // char str5[5] = {"hello"};
     char str6[6] = {"hello"};

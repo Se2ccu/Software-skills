@@ -69,7 +69,7 @@ or other chinese mirror to fast the acess.
 4.docker pull smatyukevich/raspberry-pi-os-builder
 
 4.Add date hardware to docker images after set password for win10.  
-docker run --rm -v F:\3#HUAWEI2019\raspberry-pi-os\:/data smatyukevich/raspberry-pi-os-builder ls /data
+docker run --rm -v F:\5#HUAWEI2021\raspberry-pi-os\:/data smatyukevich/raspberry-pi-os-builder ls /data
 
 4.docker image setup
 [[setup_cmd](https://blog.51cto.com/11134648/2160257)]

@@ -247,12 +247,16 @@ int main()
 	printf("TEST BEGIN.\n");
 	
 	sortInt();
+    printf("\n");
 	
 	sortStr();
+    printf("\n");
 	
 	sortDouble();
+    printf("\n");
 	
 	sortStruct2();
+    printf("\n");
 
     return 0;
 }

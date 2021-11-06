@@ -14,6 +14,7 @@ typedef struct //位域结构体，如果位域位数总和少于数据类似长
 {                                                                                                                                
     int a:1;  
     int b:4;
+    int c:28;  // 位域数超过一个int，需用2个int
 }s_stu1;
 
 

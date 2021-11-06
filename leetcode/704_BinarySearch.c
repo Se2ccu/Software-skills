@@ -38,36 +38,46 @@ int cmp_int(const void* a , const void* b)
     return (*(int*)a - *(int*)b); // a - b > 0表示升序， a - b < 0表示降序
 }
 
+/* 确认数组为升序 */
+int sorted(int* nums, int numsSize)
+{
+    int i;
+    for (i = 1; i < numsSize - 1; i++) {
+        if (nums[i] < nums[i - 1]) {
+            return 0;
+        } 
+    }
+    return 1;
+}
 
 int search(int* nums, int numsSize, int target){
     if ((nums == NULL) || (numsSize <= 0)) {
         return -1;
     }
 
-    /* To make sure the array is sorted */
-    qsort(nums, numsSize, sizeof(nums[0]), cmp_int);
+    if (!sorted(nums, numsSize)) {
+        /* To make sure the array is sorted */
+        qsort(nums, numsSize, sizeof(nums[0]), cmp_int);
+    }
 
     int low = 0;
     int high = numsSize - 1;
     int mid = 0;
+
     /* 只有一个数据，要考虑等号 */
     while (low <= high) {
-        mid = (low + high) / 2;
-
+        mid = low + (high - low) / 2;  // 避免加溢出
         if (nums[mid] == target) {
             return mid;
-        }
-        else if (target < nums[mid]) {
+        } else if (target < nums[mid]) {
             high = mid - 1;
-        }
-        else {
+        } else if (target > nums[mid]) {
             low = mid + 1;
         }
     }
     
     return -1;
 }
-
 
 int main()
 {
@@ -83,3 +93,24 @@ int main()
 
 
 
+int searchInsert(int *nums, int numsSize, int target)
+{
+    int low, high, mid, val;
+    low = 0;
+    high = numsSize - 1;
+    while(low <= high){
+        mid = (low + high) / 2;
+        val = nums[mid];
+        if (target == val){
+            return mid;
+        }
+        else if (target > val){
+            low = mid + 1;
+        }
+        else{
+            high = mid - 1;
+        }
+        
+    }
+    return high + 1;
+}

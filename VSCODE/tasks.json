@@ -1,30 +1,27 @@
 {
+    // See https://go.microsoft.com/fwlink/?LinkId=733558 
+    // for the documentation about the tasks.json format
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "build",
             "type": "shell",
+            "label": "g++.exe build active file",//任务的名字，就是刚才在命令面板中选择的时候所看到的，可以自己设置
+            "command": "D:\\Profeesional_Program\\mingw-w64\\x86_64-7.3.0-posix-seh-rt_v5-rev0\\mingw64\\bin\\g++.exe",
+            "args": [//编译时候的参数
+                "-g",//添加gdb调试选项
+                "${file}",
+                "-o",//指定生成可执行文件的名称
+                "${fileDirname}\\${fileBasenameNoExtension}.exe"
+            ],
+            "options": {
+                "cwd": "D:/Profeesional_Program/mingw-w64/x86_64-7.3.0-posix-seh-rt_v5-rev0/mingw64/bin"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
             "group": {
                 "kind": "build",
-                "isDefault": true
-            },
-            "presentation": {
-                "echo": true,
-                "reveal": "always",
-                "focus": false,
-                "panel": "shared"
-            },
-            "windows": {
-                "command": "g++",
-                "args": [
-                    "-ggdb",
-                    "\"${file}\"",
-                    "--std=c++11",
-                    "-o",
-                    "\"${fileDirname}\\${fileBasenameNoExtension}.exe\"",
-                    "-finput-charset=UTF-8",//输入编译器文本编码 默认为UTF-8
-                    "-fexec-charset=GBK"//编译器输出文本编码 自行选择
-                ]
+                "isDefault": true//表示快捷键Ctrl+Shift+B可以运行该任务
             }
         }
     ]

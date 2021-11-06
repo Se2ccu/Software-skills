@@ -14,12 +14,12 @@ typedef struct //边长结构体数组
 {                                                                                                                                
 	int len;  
 	char c[]; // 等同于c[0]
-}s_stu1; //直接用stu1定义结构体，而不是struct stu1 one
+} Stu1; //直接用stu1定义结构体，而不是struct stu1 one
 
 
 int main()      
 {       
-  printf("sizeof(s_stu1)=%d\n", sizeof(s_stu1));//结构体具体的例子
+  printf("sizeof(s_stu1)=%d\n", sizeof(Stu1)); // 4
   return 0;
 
 }

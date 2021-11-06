@@ -15,8 +15,8 @@ struct Node {
 }
 
 struct Queue {
-    struct Node *front;
-    struct Node *rear;
+    struct Node *front;   // 队列头
+    struct Node *rear;    // 队列尾
 }
 
 int InitQueue(struct Queue *queue)
@@ -35,6 +35,7 @@ int InitQueue(struct Queue *queue)
     return 0;
 }
 
+// 队列尾，用于入队，EnQueue
 int EnQueue(struct Queue *queue, int val)
 {
     struct Node *new = (struct Node *)malloc(sizeof(struct Node));
@@ -59,6 +60,7 @@ int IsEmptyQueue(struct Queue *queue)
     return FLASE;
 }
 
+// 队列头，用于出队。Dequeue
 int DeQueue(struct Queue *queue, int *ret)
 {
     struct Node *p;
