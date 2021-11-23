@@ -5,20 +5,20 @@
   功能描述   : 结构体变长数组 变长数组（variable-length array)，也简称VLA
   1.日    期   : 2020年6月11日
     修改内容   : 创建文件
-******************************************************************************/ 
+******************************************************************************/
 #include <stdio.h>
 #include <stdlib.h>
 
 #define MAX_LENGTH 10
 
 typedef struct //变长结构体数组
-{                                                                                                                              
-    int len;  
+{
+    int len;
 	int array[]; // 等同于array[0]
 } Stu1; //直接用stu1定义结构体，而不是struct stu1 one
 
-int main()      
-{       
+int main()
+{
     printf("sizeof(Stu1)=%d\n", sizeof(Stu1)); // 4
 
     int len = MAX_LENGTH;
@@ -33,14 +33,14 @@ int main()
     int targetIndex = MAX_LENGTH + 1;
 
     /* 变长数组越界判断：变长内容不能大于整体数据长度 */
-    if ((msgLen < sizeof(Stu1) + sizeof(int) * targetIndex)                                    
-        || (msgLen < sizeof(Stu1) + sizeof(int)) 
-        || (targetIndex > MAX_LENGTH) 
+    if ((msgLen < sizeof(Stu1) + sizeof(int) * targetIndex)
+        || (msgLen < sizeof(Stu1) + sizeof(int))
+        || (targetIndex > MAX_LENGTH)
         || (targetIndex < 0)) {
         printf("Segment Fault\n");
     } else {
         printf("s1.arrlay[%d] = %d\n", len, s1->array[len]);
     }
 
-    return 0;         
+    return 0;
 }

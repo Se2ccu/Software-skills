@@ -4,25 +4,30 @@ struct TreeNode {
     struct TreeNode *Right;
 }
 
+#define MIN(x, y) ((x) < (y) ? (x) : (y))
+
 int minDepth(struct TreeNode* root){
     if (NULL == root)
     {
         return 0;
     }
 
-    if (NULL == root->left)
-    {
-        return minDepth(root->right) + 1;
+    if ((root->left == NULL) && (root->right == NULL)) {
+        return 1;
     }
 
-    if (NULL == root->right)
+    /* 取左右叶节点的最小值 */
+    int minDeepLen = __INT_MAX__;
+    if (NULL != root->left)
     {
-        return minDepth(root->left) + 1;
+        minDeepLen = fmin(minDepth(root->left), minDeepLen);
     }
 
-    int left = minDepth(root->left);
-    int right = minDepth(root->right);
+    if (NULL != root->right)
+    {
+        minDeepLen = fmin(minDepth(root->right), minDeepLen);
+    }
 
-    return (left < right ? left : right) + 1;
+    return minDeepLen + 1;
 }
 
