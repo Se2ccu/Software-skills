@@ -1,7 +1,7 @@
 {
 	"file header":{
 	"prefix": "fhd",
-	"body": "/*\n * Copyright (c) HaHa Technologies Co., Ltd. 20${1:19}-20${2:19}. All rights reserved.\n * Description: ${3:文件功能描述}\n * Author: ${4: XXX}\n */$0"
+	"body": "/*\n * Copyright (c) HaHa Technologies Co., Ltd. 20${1:21}-20${2:21}. All rights reserved.\n * Description: ${3:文件功能描述}\n * Author: ${4: XXX}\n * Data: $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE\n*/$0"
 	},
 	"multi-line comment":{
 	"prefix": "mc",
@@ -10,6 +10,10 @@
 	"single line comment":{
 	"prefix": "sc",
 	"body": "/* ${1:单行注释} */$0"
+	},
+	"function comment":{
+		"prefix": "fc",
+		"body": "/*\n * ${1:函数注释}\n */$0"
 	},
 	"main()":{
 	"prefix": "main",
@@ -83,7 +87,6 @@
 		"prefix": "#define MIN",
 		"body": "#define MIN(x, y) ((x) < (y) ? (x) : (y))"
 	},
-
 	"#ifndef … #define … #endif":{
 	"prefix": "def",
 	"body": "#ifndef ${1:SYMBOL}\n#define $1 ${2:value}\n#endif\t// ${1:SYMBOL}"
@@ -100,7 +103,6 @@
 	"prefix": "mark",
 	"body": "#if 0\n${1:#pragma mark -\n}#pragma mark $2\n#endif\n\n$0"
 	},
-
 	"Header Include-Guard":{
 	"prefix": "once",
 	"body": "#ifndef ${1:SYMBOL}\n#define $1\n\n${2}\n\n#endif /* end of include guard: $1 */\n"
@@ -109,12 +111,10 @@
 	"prefix": "typedef",
 	"body": "typedef ${1:int} ${2:MyCustomType};"
 	},
-
 	"fprintf":{
 	"prefix": "fprintf",
 	"body": "fprintf(${1:stderr}, \"${2:%s}\\\\n\", $3);$4"
 	},
-
 	"scanf":{
 	"prefix": "scanf",
 	"body": "scanf(\"${1:%s}\\n\", $2);$3"
@@ -125,7 +125,7 @@
 	},
 	"any function":{
 	"prefix": "func",
-	"body": "${1:int} ${2:name}($3) {\n\t$5\n\treturn ${4:0};\n}"
+	"body": "${1:int} ${2:funcname}($3)\n{\n\t${4:}\n\treturn ${5:0};\n}$0"
 	},
 	"write file":{
 	"prefix": "wf",
@@ -169,14 +169,20 @@
     "C source common": {
 		"prefix": "file template",
         "body": [
+			"/*\n * Copyright (c) HaHa Technologies Co., Ltd. 20${21:21}-20${21:21}. All rights reserved.",
+			" * Description: ${3:文件功能描述}",
+			" * Author: ${4: XXX}",
+			" * Data: $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE ${CURRENT_HOUR}:${CURRENT_MINUTE}:${CURRENT_SECOND}\n */$0",
             "#include <stdio.h>",
-            "#include <string>",     //这个头文件可以删除，我为了使用方便就加了
+            "#include <string.h>",     //这个头文件可以删除，我为了使用方便就加了
+            "#include <stdbool.h>",
+            "#include <math.h>",
             "", //空行
             "",
             "int main(int argc, char *argv[])",   //main()函数
             "{",
-            "   $0",    //最终光标会在这里等待输入
-            "   return 0;", //结束
+            "    $0",    //最终光标会在这里等待输入
+            "    return 0;", //结束
             "}",
             "",
         ],
