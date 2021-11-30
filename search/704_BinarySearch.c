@@ -15,12 +15,11 @@
  *  1.Date     : 2020.4.9
  *    Author   : Zhoutaoccu
  *    Content  : Creat New File
-*/ 
+*/
 
 #include <stdio.h>   /* gets */
 #include <stdlib.h>  /* atoi,malloc,qsort */
 #include <string.h>  /* strcpy,strcmp */
-#include "uthash.h"
 
 typedef unsigned char UINT8;
 typedef signed char INT8;
@@ -45,7 +44,7 @@ int sorted(int* nums, int numsSize)
     for (i = 1; i < numsSize - 1; i++) {
         if (nums[i] < nums[i - 1]) {
             return 0;
-        } 
+        }
     }
     return 1;
 }
@@ -66,7 +65,6 @@ int search(int* nums, int numsSize, int target){
 
     /* 只有一个数据，要考虑等号 */
     while (low <= high) {
-        // mid = (low + high) / 2;
         mid = low + (high - low) / 2; // 防止整数溢出
         if (nums[mid] == target) {
             return mid;
@@ -76,18 +74,43 @@ int search(int* nums, int numsSize, int target){
             low = mid + 1;
         }
     }
-    
+
     return -1;
+}
+
+int AllInOneSearch(int* nums, int numsSize, int target){
+    if ((nums == NULL) || (numsSize <= 0)) {
+        return -1;
+    }
+
+    int low = 0;
+    int high = numsSize - 1;
+    int mid = 0;
+
+    /* 只有一个数据，要考虑等号 */
+    while (low < high) {
+        mid = low + (high - low) / 2;  // 避免加溢出
+        if (nums[mid] == target) {
+            return mid;
+        } else if (nums[mid] > target) {
+            high = mid - 1;
+        } else if (nums[mid] < target) {
+            low = mid + 1;
+        }
+    }
+
+    return nums[low] == target ? low : -1;
 }
 
 int main()
 {
 	printf("TEST BEGIN.\n");
-	
+
     int a[10] = {-1,0,3,5,9,12};
-    int target = 2;
+    int target = 3;
     printf("Index in sorted array is [%d]\n", search(a, 6, target));
-    
+    printf("Index in AllInOneSearch array is [%d]\n", AllInOneSearch(a, 6, target));
+
     return 0;
 }
 
