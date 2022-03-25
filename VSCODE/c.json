@@ -169,7 +169,7 @@
     "C source common": {
 		"prefix": "file template",
         "body": [
-			"/*\n * Copyright (c) HaHa Technologies Co., Ltd. 20${21:21}-20${21:21}. All rights reserved.",
+			"/*\n * Copyright (c) HaHa Technologies Co., Ltd. 20${22:22}-20${22:22}. All rights reserved.",
 			" * Description: ${3:文件功能描述}",
 			" * Author: ${4: XXX}",
 			" * Data: $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE ${CURRENT_HOUR}:${CURRENT_MINUTE}:${CURRENT_SECOND}\n */$0",
