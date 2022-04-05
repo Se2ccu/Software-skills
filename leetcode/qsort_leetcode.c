@@ -58,7 +58,7 @@ int compareMyType (const void * a, const void * b)
 
 int cmp_int(const void* a , const void* b)
 {
-    return (*(int*)a - *(int*)b); // a - b > 0表示升序， a - b < 0表示降序
+    return (*(int*)a - *(int*)b); // a - b > 0表示升序， a - b < 0表示降序， a == b表示相等
 }
 
 int cmp_int_reverse(const void* a , const void* b)

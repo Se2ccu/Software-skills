@@ -1,7 +1,7 @@
 {
 	"file header":{
 	"prefix": "fhd",
-	"body": "/*\n * Copyright (c) HaHa Technologies Co., Ltd. 20${1:21}-20${2:21}. All rights reserved.\n * Description: ${3:文件功能描述}\n * Author: ${4: XXX}\n * Data: $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE\n*/$0"
+	"body": "/*\n * Copyright (c) HaHa Technologies Co., Ltd. 20${1:22}-20${2:22}. All rights reserved.\n * Description: ${3:文件功能描述}\n * Author: ${4: XXX}\n * Data: $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE\n*/$0"
 	},
 	"multi-line comment":{
 	"prefix": "mc",
@@ -14,6 +14,10 @@
 	"function comment":{
 		"prefix": "fc",
 		"body": "/*\n * ${1:函数注释}\n */$0"
+	},
+	"stub for global variable":{
+		"prefix": "stub",
+		"body": "${1:int} ${2:g_stub} = 0;\nint wait = (${2:g_stub} != 0) ? ${2:g_stub} : waite;\n"
 	},
 	"main()":{
 	"prefix": "main",
