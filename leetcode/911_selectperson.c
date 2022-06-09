@@ -36,7 +36,7 @@ TopVotedCandidate* topVotedCandidateCreate(int* persons, int personsSize, int* t
         }
         obj->top[i] = topId;
 
-        obj->time = times[i];
+        obj->time[i] = times[i];
     }
 
     free(distrbute);
