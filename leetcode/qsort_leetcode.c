@@ -238,6 +238,40 @@ void sortStruct2()
     printf("\n");
 }
 
+int cmp2(const void* a, const void* b) // 2D Matrix
+{
+    return ((int *)a)[2] - ((int *)b)[2];
+}
+
+int b_arr[][3] = { {3, 2, 5},
+                   {1, 1, 8},
+                   {6, 2, 9},
+                   {9, 2, 4} };
+
+int sortData2()
+{
+    printf("Hello world!\n");
+    int i, j;
+    for (i = 0; i < 4; i++) {
+        for (j = 0; j < 3; j++) {
+            printf("%d ", b_arr[i][j]);
+        }
+        printf("\n");
+    }
+
+    int size = sizeof(b_arr) / (3 * sizeof(int));
+    qsort(b_arr, 4, 3 * sizeof(int), cmp2);
+    printf("After sorted: \n");
+    for (i = 0; i < 4; i++) {
+        for (j = 0; j < 3; j++) {
+            printf("%d ", b_arr[i][j]);
+        }
+        printf("\n");
+    }
+
+    return 0;
+}
+
 
 
 
@@ -256,6 +290,9 @@ int main()
     printf("\n");
 	
 	sortStruct2();
+    printf("\n");
+
+    sortData2();
     printf("\n");
 
     return 0;

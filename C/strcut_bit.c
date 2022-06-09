@@ -19,7 +19,7 @@ typedef struct //位域结构体，如果位域位数总和少于数据类似长
 
 
 int main()      
-{   
+{
     s_stu1 stu1;
     stu1.a = 1;
     printf("sizeof(s_stu1) = %d\n", sizeof(s_stu1));
