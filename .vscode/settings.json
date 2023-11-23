@@ -1,0 +1,13 @@
+{
+    "C_Cpp.errorSquiggles": "Disabled",
+    "files.associations": {
+        "cmath": "c",
+        "stdbool.h": "c",
+        "math.h": "c",
+        "uthash.h": "c",
+        "cstdlib": "c",
+        "safe_mem_lib.h": "c",
+        "safe_lib_errno.h": "c",
+        "safe_compile.h": "c"
+    }
+}
